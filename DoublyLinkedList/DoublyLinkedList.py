@@ -57,7 +57,29 @@ class DoublyLinkedList:
             _removed_node._next_node = None
             self._size -=1
             return _removed_node._value
-
+    def get(self, _index):
+        if _index == self._size - 1:
+            return self._queue
+        elif _index == 0:
+            return self._head
+        elif _index > 0 and _index < self._size - 1:
+            _auxiliary_index = int(self._size/2)
+            if _index <= _auxiliary_index:
+                _present_node = self._head
+                _accountant = 0
+                while _accountant != _index:
+                    _present_node = _present_node._next_node
+                    _accountant += 1
+                return _present_node
+            else:
+                _present_node = self._queue
+                _accountant = self._size - 1
+                while _accountant != _index:
+                    _present_node = _present_node._next_node
+                    _accountant -= 1
+                return _present_node
+        else:
+            return None
 
 
 obj_node = DoublyLinkedList()
@@ -66,5 +88,5 @@ obj_node.append(2)
 obj_node.append(3)
 obj_node.append(4)
 print(obj_node)
-print("Last node removed: ",obj_node.pop())
-print(obj_node)
+search_index = 1
+print("Get searched node : "+str(obj_node.get(search_index)._value) if obj_node.get(search_index) != None else "Not found")
