@@ -36,6 +36,16 @@ class DoublyLinkedList:
             self._queue = _new_node
         self._size += 1
 
+    def shift(self):
+        if self._size == 0:
+            self._head = None
+            self._queue = None
+        elif self._head != None:
+            _removed_node = self._head
+            self._head = _removed_node._next_node
+            _removed_node._next_node = None
+            self._size -=1
+        return _removed_node._value
 
 
 obj_node = DoublyLinkedList()
@@ -43,4 +53,6 @@ obj_node.append(1)
 obj_node.append(2)
 obj_node.append(3)
 obj_node.append(4)
+print(obj_node)
+print("First node removed: ",obj_node.shift())
 print(obj_node)
