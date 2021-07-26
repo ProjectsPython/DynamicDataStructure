@@ -80,6 +80,12 @@ class DoublyLinkedList:
                 return _present_node
         else:
             return None
+    def update(self,_index, _value):
+        _target_node = self.get(_index)
+        if _target_node != None:
+            _target_node._value =  _value
+        else:
+            return None
 
 
 obj_node = DoublyLinkedList()
@@ -88,5 +94,5 @@ obj_node.append(2)
 obj_node.append(3)
 obj_node.append(4)
 print(obj_node)
-search_index = 1
-print("Get searched node : "+str(obj_node.get(search_index)._value) if obj_node.get(search_index) != None else "Not found")
+obj_node.update(3,3.5)
+print(obj_node)
