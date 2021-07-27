@@ -117,6 +117,17 @@ class DoublyLinkedList:
             return _removed_node
         else:
             return None
+    def reverse(self):
+        _reverted_nodes = None
+        _present_node = self._head
+        self._queue = _present_node
+        while _present_node!= None:
+            _reverted_nodes = _present_node._previous_node
+            _present_node._previous_node = _present_node._next_node
+            _present_node._next_node = _reverted_nodes
+            _present_node = _present_node._previous_node
+        self._head = _reverted_nodes._previous_node
+
 
 obj_node = DoublyLinkedList()
 obj_node.append(1)
@@ -124,5 +135,5 @@ obj_node.append(2)
 obj_node.append(3)
 obj_node.append(4)
 print(obj_node)
-obj_node.remove(2)
+obj_node.reverse()
 print(obj_node)
