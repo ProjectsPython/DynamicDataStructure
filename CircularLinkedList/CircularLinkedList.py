@@ -109,6 +109,22 @@ class CircularLinkedList:
         else:
             return None
 
+    def remove(self,_index):
+        if _index == self._size - 1:
+            return self.pop()
+        elif _index == 0:
+            return self.shift()
+        elif _index > 0 and _index < self._size - 1:
+            _previous_nodes = self.get(_index - 1)
+            _removed_node = _previous_nodes._next_node
+            _previous_nodes._next_node = _removed_node._next_node
+            _removed_node._next_node = None
+            self._size -= 1
+            return _removed_node
+        else:
+            return None
+        
+
 
     
 
@@ -121,5 +137,5 @@ obj_node.append(2)
 obj_node.append(3)
 obj_node.append(4)
 print(obj_node)
-obj_node.insert(2,3.5)
+obj_node.remove(1)
 print(obj_node)
