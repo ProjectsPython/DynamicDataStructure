@@ -34,10 +34,36 @@ class CircularLinkedList:
             self._queue._next_node = _new_node
             self._head = _new_node
         self._size += 1
+    
+    def append(self,_value):
+        _new_node = self._Node(_value)
+        if self._head == None and self._queue == None:
+            self._head = _new_node
+            self._queue = _new_node
+        else:
+            self._queue._next_node = _new_node
+            _new_node._next_node = self._head
+            self._queue = _new_node
+        self._size += 1
+    
+    def shift(self):
+        if self._size == 0:
+            self._head = None
+            self._queue = None
+        else:
+            _removed_node = self._head
+            self._head = _removed_node._next_node
+            self._queue._next_node = self._head
+            _removed_node._next_node = None
+            self._size -= 1
+            return _removed_node._value
+
 
 obj_node = CircularLinkedList()
-obj_node.prepend(1)
-obj_node.prepend(2)
-obj_node.prepend(3)
-obj_node.prepend(4)
+obj_node.append(1)
+obj_node.append(2)
+obj_node.append(3)
+obj_node.append(4)
+print(obj_node)
+print("Removed first node: "+ str(obj_node.shift()))
 print(obj_node)
