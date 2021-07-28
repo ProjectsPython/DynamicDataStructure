@@ -123,12 +123,27 @@ class CircularLinkedList:
             return _removed_node
         else:
             return None
-        
-
-
     
+    def reverse(self):
+        _reverted_nodes = None
+        _present_node = self._head
+        self._queue = _present_node
+        _accountant = self._size
+        _pivot = True
+        while _accountant != 0:
+            if _pivot != False or _present_node != self._head:
+                _forward_node = _present_node._next_node
+                _present_node._next_node = _reverted_nodes
+                _reverted_nodes = _present_node
+                _present_node = _forward_node
+                _pivot = False
+                _accountant -= 1
+            else:
+                break
+        self._head = _reverted_nodes
+        self._queue._next_node = self._head
 
-
+        
 
 
 obj_node = CircularLinkedList()
@@ -137,5 +152,5 @@ obj_node.append(2)
 obj_node.append(3)
 obj_node.append(4)
 print(obj_node)
-obj_node.remove(1)
+obj_node.reverse()
 print(obj_node)
