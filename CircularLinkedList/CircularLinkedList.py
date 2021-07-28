@@ -73,6 +73,27 @@ class CircularLinkedList:
             self._queue._next_node = self._head
             self._size -= 1
             return _removed_node._value
+        
+    def get(self, _index):
+        if _index == self._size - 1:
+            return self._queue
+        elif _index == 0:
+            return self._head
+        elif _index > 0 and _index < self._size - 1:
+            _present_node = self._head
+            _accountant = 0
+            while _accountant != _index:
+                _present_node = _present_node._next_node
+                _accountant += 1
+            return _present_node
+        else:
+            return None
+    def update(self,_index, _value):
+        _target_node = self.get(_index)
+        if _target_node != None:
+            _target_node._value =  _value
+        else:
+            return None
 
 
 
@@ -82,5 +103,5 @@ obj_node.append(2)
 obj_node.append(3)
 obj_node.append(4)
 print(obj_node)
-print("Removed last node: "+ str(obj_node.pop()))
+obj_node.update(3,3.5)
 print(obj_node)
