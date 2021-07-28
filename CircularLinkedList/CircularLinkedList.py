@@ -88,12 +88,30 @@ class CircularLinkedList:
             return _present_node
         else:
             return None
+
     def update(self,_index, _value):
         _target_node = self.get(_index)
         if _target_node != None:
             _target_node._value =  _value
         else:
             return None
+    
+    def insert(self,_index, _value):
+        if _index == self._size - 1:
+            return self.append(_value)
+        elif _index >= 0 and _index < self._size - 1:
+            _new_node = self._Node(_value)
+            _previous_nodes = self.get(_index)
+            _next_nodes = _previous_nodes._next_node
+            _previous_nodes._next_node = _new_node
+            _new_node._next_node = _next_nodes
+            self._size += 1
+        else:
+            return None
+
+
+    
+
 
 
 
@@ -103,5 +121,5 @@ obj_node.append(2)
 obj_node.append(3)
 obj_node.append(4)
 print(obj_node)
-obj_node.update(3,3.5)
+obj_node.insert(2,3.5)
 print(obj_node)
