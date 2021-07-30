@@ -50,10 +50,26 @@ class CircularDoublyLinkedList:
             self._head._previous_node = _new_node
             self._queue = _new_node
         self._size += 1
+    def shift(self):
+        if self._size == 0:
+            self._head = None
+            self._queue = None
+        else:
+            _removed_node = self._head
+            self._head = _removed_node._next_node
+            self._head._previous_node = self._queue
+            self._queue._next_node = self._head
+            _removed_node._next_node = None
+            _removed_node._previous_node = None
+            self._size -= 1
+            return _removed_node._value
+
+
 
 obj_node = CircularDoublyLinkedList()
 obj_node.append(1)
 obj_node.append(2)
 obj_node.append(3)
 obj_node.append(4)
+obj_node.shift()
 print(obj_node)
