@@ -19,6 +19,18 @@ class Queue:
             self._queue = _new_node
         self._size += 1
     
+    def dequeue (self):
+        if self._size == 0:
+            self._head = None
+            self._queue = None
+        else:
+            _removed_node = self._head
+            self._head = _removed_node._next_node
+            _removed_node._next_node = None
+            self._size -= 1
+            return _removed_node._value
+
+
 
 
         
