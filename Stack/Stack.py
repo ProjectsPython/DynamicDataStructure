@@ -16,3 +16,14 @@ class Stack:
             _array.append(_present_node._value)
             _present_node = _present_node._next_node
         return str(_array) + " Size: " + str(self._size)
+
+    def push(self,_value):
+        _new_node = self._Node(_value)
+        if self._head == None and self._queue == None:
+            self._head = _new_node
+            self._queue = _new_node
+        else:
+            _new_node._next_node = self._head
+            self._head = _new_node
+        self._size += 1
+
