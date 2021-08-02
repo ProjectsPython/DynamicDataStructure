@@ -39,6 +39,15 @@ class Queue:
             return _removed_node._value
 
 
+print('First in, first out (FIFO)')
+obj_node = Queue()
+obj_node.enqueue(1)
+obj_node.enqueue(2)
+obj_node.enqueue(3)
+obj_node.enqueue(4)
+print(obj_node)
+obj_node.dequeue()
+print(obj_node)
 
 
         
