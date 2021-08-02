@@ -36,5 +36,15 @@ class Stack:
             self._head = _removed_node._next_node
             _removed_node._next_node = None
             self._size -= 1
-            return _removed_node._value
+            return _removed_node
 
+print('Last in, first out (LIFO)')
+obj_node = Stack()
+obj_node.push(1)
+obj_node.push(2)
+obj_node.push(3)
+obj_node.push(4)
+obj_node.push(5)
+print(obj_node)
+obj_node.pop()
+print(obj_node)
